@@ -41,13 +41,33 @@ class AuthController {
                     <p>Necesitamos que verifiques tu mail</p>
                     <p>Haz click en "Verificar" para verificar este mail</p>
                     <a 
-                    href='http://localhost:8080/api/auth/verify-email?verification_email_token=${verification_email_token}'
+                    href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
                     >Verificar</a>
                     <br>
                     <span>Si desconoces este registro desestima este mail</span>
                     `
                 }
             )
+
+//             console.log("ANTES de enviar mail");
+
+// await mail_transporter.sendMail({
+//   from: ENVIRONMENT.GMAIL_USERNAME,
+//   to: email,
+//   subject: 'Verifica tu email',
+//   html: `
+//     <h1>Bienvenido ${username}</h1>
+//     <p>Necesitamos que verifiques tu mail</p>
+//     <a 
+//       href='http://localhost:8080/api/auth/verify-email?verification_email_token=${verification_email_token}'
+//     >
+//       Verificar
+//     </a>
+//   `
+// });
+
+// console.log("MAIL ENVIADO OK");
+
 
             return response.json({
                 message: 'Usuario creado exitosamente',
