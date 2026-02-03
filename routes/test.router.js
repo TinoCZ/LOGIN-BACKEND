@@ -4,7 +4,7 @@ import authMiddleware from '../middlewares/auth.middlware.js'
 
 const testRouter = express.Router()
 
-//GET /api/test/
+
 testRouter.get(
     '/', 
     testController.get
@@ -29,6 +29,3 @@ testRouter.get(
 export default testRouter
 
 
-/* 
-Implementar la capa de controller en el authRouter
-*/

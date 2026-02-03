@@ -27,10 +27,8 @@ class AuthController {
                 {
                     email: email //Guardamos el email del usuario que se quiere registrar
                 },
-                ENVIRONMENT.JWT_SECRET_KEY/* ,
-                {
-                    expiresIn: '7d'
-                } */
+                ENVIRONMENT.JWT_SECRET_KEY ,
+                
             )
 
             mail_transporter.sendMail(
@@ -173,17 +171,7 @@ class AuthController {
                     email_verified: true
                 }
             )
-           /*  return response.json(
-                {
-                    ok: true,
-                    status: 200,
-                    message: "usuario verificado",
-                    data: null
-                }
-            ) */
-            /* 
-            Redireccionar al frontend 
-            */
+          
             return response.redirect(
                 ENVIRONMENT.URL_FRONTEND + '/login?from=email-validated' //La querystring from=email-validated es opcional
             ) 
@@ -226,10 +214,5 @@ export default authController
 
 
 
-/* 
-condicion sobre una variable
-un bucle de 100 a 1000 registros (donde no se consulta a ningun servicio externo)
-una consulta a DB (Debatible porque si la DB tiene millones de registros puede ser mas costoso)
-una consulta a otro servidor
-*/
+
 

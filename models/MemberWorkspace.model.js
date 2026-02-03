@@ -27,7 +27,3 @@ const MemberWorkspaceSchema = new mongoose.Schema(
 
 const MemberWorkspace = mongoose.model('MemberWorkspace', MemberWorkspaceSchema)
 export default MemberWorkspace
-/* 
-Continuar con estos modelos:
-- ChannelMessages
-*/

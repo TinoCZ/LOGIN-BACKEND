@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 
-/* Terminar de crear el modelo */
+
 const workspaceSchema = new mongoose.Schema(
     {
         fk_id_owner: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'User', //Aca marcamos la "relacion"
+            ref: 'User', 
             required: true
         },
         title: {

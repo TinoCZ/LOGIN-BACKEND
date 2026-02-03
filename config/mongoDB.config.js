@@ -1,12 +1,11 @@
 import mongoose from "mongoose"
 import ENVIRONMENT from "./environment.config.js"
-/* CONEXION CON MONGODB */
 
 const connection_string = `${ENVIRONMENT.MONGO_DB_URI}/${ENVIRONMENT.MONGO_DB_NAME}`
 
 export async function connectMongoDB (){
     try{
-        //Bloque de codigo a ejecutar
+     
         await mongoose.connect(
             connection_string
         )

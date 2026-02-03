@@ -52,38 +52,3 @@ app.listen(
     }
 )
 
-/* mail_transporter.sendMail({
-    from: ENVIRONMENT.GMAIL_USERNAME,
-    to: ENVIRONMENT.GMAIL_USERNAME,
-    subject: 'Probando nodemailer',
-    html: `<h1>Probando nodemailer</h1>`
-}) */
-
-
-    /* 
-//Quiero crear un espacio de trabajo de prueba
-*/
-
-/* */
-// async function crearEspacioDeTrabajo (){
-
-//     //Creo el espacio de trabajo de prueba
-//     const workspace = await workspaceRepository.create(
-//         '696d4cab00a24ff5369848f7', //Remplazen por su id
-//         'test',
-//         'https://images.ecestaticos.com/XBt9G5umGpid8S2dgQk2G5jGUow=/119x0:2001x1412/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F848%2Ff70%2F0d5%2F848f700d5a15920f020496a616af873a.jpg',
-//         'Descripcion del espacio de trabajo'
-//     )
-//     //Me agrego como miembro
-//     await workspaceRepository.addMember(workspace._id, '696d4cab00a24ff5369848f7', 'Owner')
-// }
-
-// crearEspacioDeTrabajo() 
-
-/* 
-1ero:
-    Crear espacio de trabajo
-    Agregar miembro
-
-2do: Crear endpoint para obtener espacios de trabajo asociados al usuario
-3ro: Probar con postman */
