@@ -31,23 +31,49 @@ class AuthController {
                 
             )
 
-            mail_transporter.sendMail(
-                {
-                    from: ENVIRONMENT.GMAIL_USERNAME,
-                    to: email,
-                    subject: 'Verifica tu email',
-                    html: `
-                    <h1>Bienvenido ${username}</h1>
-                    <p>Necesitamos que verifiques tu mail</p>
-                    <p>Haz click en "Verificar" para verificar este mail</p>
-                    <a 
-                    href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
-                    >Verificar</a>
-                    <br>
-                    <span>Si desconoces este registro desestima este mail</span>
-                    `
-                }
-            )
+  await mail_transporter.sendMail({
+  from: 'onboarding@resend.dev',
+  to: email,
+  subject: 'Verifica tu email',
+  html: `
+    <h1>Bienvenido ${username}</h1>
+    <p>Necesitamos que verifiques tu mail</p>
+    <p>Haz click en "Verificar" para verificar este mail</p>
+    <a 
+      href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
+    >
+      Verificar
+    </a>
+    <br>
+    <span>Si desconoces este registro desestima este mail</span>
+  `
+})
+
+
+
+
+
+
+
+// funcional solo en local:
+
+                // mail_transporter.sendMail(
+                //     {
+                //         from: ENVIRONMENT.GMAIL_USERNAME,
+                //         to: email,
+                //         subject: 'Verifica tu email',
+                //         html: `
+                //         <h1>Bienvenido ${username}</h1>
+                //         <p>Necesitamos que verifiques tu mail</p>
+                //         <p>Haz click en "Verificar" para verificar este mail</p>
+                //         <a 
+                //         href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
+                //         >Verificar</a>
+                //         <br>
+                //         <span>Si desconoces este registro desestima este mail</span>
+                //         `
+                //     }
+                // )
 
 //             console.log("ANTES de enviar mail");
 
