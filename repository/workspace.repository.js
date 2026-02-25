@@ -7,15 +7,29 @@ class WorkspaceRepository {
         return await Workspace.findById(workspace_id)
     }
     async getWorkspacesByUserId(user_id){
-        
+        //Busco a todos los miembros que pertenezcan al usuario
+        //Esto seria buscar todas mis membresias
         const workspaces = await MemberWorkspace.find({fk_id_user: user_id})
         .populate({
             path: 'fk_id_workspace',
             match: {active: true}
-        }) 
+        }) //Esto permite expandir sobre la referencia a la tabla de espacios de trabajo
 
 
-        return workspaces.filter((member) => member.fk_id_workspace !== null) 
+        const members_workspace = workspaces.filter((member) => member.fk_id_workspace !== null) 
+        return members_workspace.map(
+            (member_workspace) => {
+                return {
+                    member_id: member_workspace._id,
+                    member_role: member_workspace.role,
+                    member_id_user: member_workspace.fk_id_user,
+                    workspace_image: member_workspace.fk_id_workspace.image,
+                    workspace_title: member_workspace.fk_id_workspace.title,
+                    workspace_id: member_workspace.fk_id_workspace._id
+                    
+                }
+            }
+        )
     }
     async create (fk_id_owner, title, image, description){
         const workspace = await Workspace.create({
@@ -36,6 +50,7 @@ class WorkspaceRepository {
         return member
     }
 
+    //Obtener miembro de un espacio de trabajo por id de espacio de trabajo y id de usuario
     async getMemberByWorkspaceIdAndUserId(workspace_id, user_id){
         const member = await MemberWorkspace.findOne({fk_id_workspace: workspace_id, fk_id_user: user_id})
         return member
@@ -44,6 +59,9 @@ class WorkspaceRepository {
     async delete(workspace_id){
         await Workspace.findByIdAndUpdate(workspace_id, {active: false})
     }
+//     async delete(workspace_id){
+//     await Workspace.findByIdAndDelete(workspace_id)
+// }
 }
 
 const workspaceRepository = new WorkspaceRepository()

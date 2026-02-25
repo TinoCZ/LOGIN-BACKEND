@@ -1,5 +1,5 @@
 import ServerError from "../helpers/error.helpers.js"
-import { channelRepository } from "../repository/channel.repository.js"
+import channelRepository from "../repository/channel.repository.js"
 
 async function channelMiddleware(request, response, next) {
     try {

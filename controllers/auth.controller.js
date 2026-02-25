@@ -36,16 +36,60 @@ class AuthController {
   to: email,
   subject: 'Verifica tu email',
   html: `
-    <h1>Bienvenido ${username}</h1>
-    <p>Necesitamos que verifiques tu mail</p>
-    <p>Haz click en "Verificar" para verificar este mail</p>
-    <a 
-      href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
-    >
-      Verificar
-    </a>
-    <br>
-    <span>Si desconoces este registro desestima este mail</span>
+     <div style="background-color:#f4f4f4; padding:40px 0; font-family:Arial, sans-serif;">
+    
+    <div style="
+      max-width:500px;
+      margin:0 auto;
+      background-color:#ffffff;
+      padding:40px;
+      border-radius:8px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.08);
+      text-align:center;
+    ">
+
+      <h1 style="
+        font-size:22px;
+        color:#1d1c1d;
+        margin-bottom:16px;
+      ">
+        Bienvenido ${username}
+      </h1>
+
+      <p style="
+        font-size:14px;
+        color:#616061;
+        margin-bottom:24px;
+      ">
+        Necesitamos que verifiques tu email para activar tu cuenta.
+      </p>
+
+      <a 
+        href='${ENVIRONMENT.URL_BACKEND}/api/auth/verify-email?verification_email_token=${verification_email_token}'
+        style="
+          display:inline-block;
+          padding:14px 24px;
+          background-color:#611f69;
+          color:#ffffff;
+          text-decoration:none;
+          border-radius:6px;
+          font-weight:600;
+          font-size:14px;
+        "
+      >
+        Verificar email
+      </a>
+
+      <p style="
+        margin-top:30px;
+        font-size:12px;
+        color:#999999;
+      ">
+        Si no solicitaste este registro, podés ignorar este mensaje.
+      </p>
+
+    </div>
+  </div>
   `
 })
 
@@ -93,6 +137,7 @@ class AuthController {
 // });
 
 // console.log("MAIL ENVIADO OK");
+
 
 
             return response.json({

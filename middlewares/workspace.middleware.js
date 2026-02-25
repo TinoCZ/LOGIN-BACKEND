@@ -11,7 +11,7 @@ function workspaceMiddleware(authorized_roles = []) {
 
     return async function (request, response, next) {
         try {
-
+console.log("params 👉", request.params)
             const user_id = request.user.id
             const workspace_id = request.params.workspace_id
 
